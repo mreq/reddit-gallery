@@ -1,0 +1,12 @@
+# Built version and tmp
+/dist
+/tmp
+
+# Sublime project & workspace
+/*.sublime-*
+
+# Node stuff
+/node_modules
+
+# Bower
+bower_components

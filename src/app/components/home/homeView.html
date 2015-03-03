@@ -1,0 +1,24 @@
+<div class="rg-container">
+	<h1>Reddit gallery</h1>
+	<p>Type subreddit-string into the field above and enjoy some images.</p>
+
+	<div data-ng-show="queries.length">
+		<h2>Recent queries</h2>
+
+		<ul class="rg-list">
+			<li data-ng-repeat="query in queries"><a data-ng-href="#/r/{{ query }}">{{ query }}</a></li>
+		</ul>
+	</div>
+	<div data-ng-hide="queries.length">
+		<h2>Example queries</h2>
+
+		<ul class="rg-list">
+			<li><a href="#/r/earthporn">earthporn</a></li>
+			<li><a href="#/r/cats+catloaf+startledcats">cats+catloaf+startledcats</a></li>
+		</ul>
+	</div>
+
+	<h2>About</h2>
+
+	<p>Created by <a href="https://github.com/mreq" target="_blank">mreq</a> using angular over <a href="https://github.com/mreq/reddit-gallery" target="_blank">at github</a>.</p>
+</div>

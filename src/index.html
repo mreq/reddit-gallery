@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-ng-app="reddit-gallery">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>reddit gallery</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" href="stylesheets/reddit-gallery.css">
+	</head>
+	<body>
+		<div id="rg-wrap">
+			<div id="rg-view" data-ng-view></div>
+		</div>
+		<header id="rg-header">
+			<div id="rg-input-wrap"><input type="text" id="rg-input" data-ng-model="subreddits"></div>
+			<a href="/">/r/</a>
+			<div class="rg-spinner">
+			  <div class="rg-rect1"></div>
+			  <div class="rg-rect2"></div>
+			  <div class="rg-rect3"></div>
+			  <div class="rg-rect4"></div>
+			</div>
+		</header>
+
+		<script type="text/javascript" src="javascripts/vendor.js"></script>		
+		<script type="text/javascript" src="javascripts/templates.js"></script>		
+		<script type="text/javascript" src="javascripts/app.js"></script>		
+	</body>
+</html>
