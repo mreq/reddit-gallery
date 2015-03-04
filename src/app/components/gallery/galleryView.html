@@ -1,12 +1,18 @@
 <div id="rg-gallery">
 	<ul data-rg-gallery-ul>
 		<li data-ng-repeat="album in gallery">
-			<ul data-rg-gallery-ul-gallery>
-				<li data-ng-repeat="image in album.images" data-rg-image="image">
-					<img data-ng-src="{{ image.link }}" alt="{{ image.description }}">
-					<div class="rg-img-spinner"><div class="rg-rect1"></div><div class="rg-rect2"></div><div class="rg-rect3"></div><div class="rg-rect4"></div></div>
-				</li>
-			</ul>
+			<div data-ng-hide="hideDistant(album.thisIndex)">
+				<ul data-rg-gallery-ul-gallery>
+					<li data-ng-repeat="image in album.images" data-rg-image="image">
+						<img data-ng-src="{{ image.link }}" alt="{{ image.description }}">
+						<div class="rg-img-spinner"><div class="rg-rect1"></div><div class="rg-rect2"></div><div class="rg-rect3"></div><div class="rg-rect4"></div></div>
+					</li>
+				</ul>
+				<h2><a data-ng-href="{{ album.link }}" target="_blank">{{ album.title }}</a></h2>
+				<div class="rg-album-nav" ng-if="album.images.length > 1">
+					<span data-ng-repeat="image in album.images" data-ng-class="{ 'rg-active': image == album.images[album.verticalIndex] }"></span>
+				</div>
+			</div>
 		</li>
 	</ul>
 </div>

@@ -11,9 +11,10 @@ angular
 			fixDimensions = ->
 				wh = w.height()
 				el.height wh*$scope.album.length + 100
+				moveAlbum()
 
 			fixDimensions()
-			$($window).on 'resize.rgGalleryUl', fixDimensions
+			$($window).on 'resize.rgGalleryUl orientationchange.rgGalleryUl', fixDimensions
 
 			$scope.$watch 'album.verticalIndex', moveAlbum
 

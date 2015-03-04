@@ -17,7 +17,8 @@ angular
 					verticalIndex = verticalIndex + 1
 				else if e.keyCode is 38  # up
 					verticalIndex = verticalIndex - 1
-				else
+				else                     # other keys focus the input
+					angular.element('#rg-input').focus()
 					return false
 
 				if index < 0 or index > ($scope.gallery.length - 1)
@@ -27,7 +28,6 @@ angular
 					return false
 				
 				# Move
-				w = $($window)
 				el.css 'transform', """translate(#{ -w.width()*index }px, 0)"""
 				$scope.$apply ->
 					if index is oldindex
@@ -39,6 +39,8 @@ angular
 			fixDimensions = ->
 				ww = w.width()
 				el.width ww*$scope.gallery.length + 100
+				el.children('li').width ww
+				el.css 'transform', """translate(#{ -w.width()*$scope.index }px, 0)"""
 
 			$($window).on 'resize.rgGalleryUl', fixDimensions
 			$scope.$watch 'gallery.length', fixDimensions

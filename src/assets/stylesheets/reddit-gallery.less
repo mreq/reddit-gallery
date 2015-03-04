@@ -50,7 +50,7 @@ h1 {
 h2 {
 	.fsize(@bf + 5);
 	padding: 20px 0 0;
-	a {
+	.rg-close {
 		.rounded(50%);
 		.fsize(@bf,@bf);
 		.sq(@bf+6);
@@ -128,6 +128,7 @@ ul {
 	width: 100%;
 	height: @hHeader;
 	padding: 10px 0;
+	overflow: hidden;
 	a {
 		.topleft;
 		.fsize(20px, 20px);
@@ -197,28 +198,57 @@ ul {
 		> li {
 			height: 100%;
 			float: left;
-			> ul {
+			> div {
 				height: 100%;
-				> li {
-					height: 100%;
-					display: block;
-					text-align: center;
-					position: relative;
-					overflow: hidden;
-					img, .rg-img-spinner {
+				position: relative;
+				> .rg-album-nav {
+					.bottomright(10px, 10px);
+					width: 6px;
+					> span {
+						.sq(6px);
+						.opacity(0.3);
 						.transition(opacity 0.3s);
+						margin-top: 3px;
+						display: block;
+						background: @fg;
 					}
-					img {
-						.topleft(50%, 50%);
-						.opacity(0);
+					> .rg-active { .opacity(0.6); }
+				}
+				> h2 {
+					.bottomleft(10px, 10px);
+					.fsize;
+					.opacity(1);
+					width: 100%;
+					padding: 0 30px 0 0;
+					margin: 0;
+					a {
+						color: @fg;
+						text-decoration: none;
 					}
-					.rg-img-spinner {
-						.icl(32px, 50px);
-						.make-rg-spinner(32px, 50px);
-					}
-					&.rg-loaded {
-						img { .opacity(1); }
-						.rg-img-spinner { .opacity(0); }
+				}
+				> ul {
+					height: 100%;
+					> li {
+						height: 100%;
+						display: block;
+						text-align: center;
+						position: relative;
+						overflow: hidden;
+						img, .rg-img-spinner {
+							.transition(opacity 0.3s);
+						}
+						img {
+							.topleft(50%, 50%);
+							.opacity(0);
+						}
+						.rg-img-spinner {
+							.icl(32px, 50px);
+							.make-rg-spinner(32px, 50px);
+						}
+						&.rg-loaded {
+							img { .opacity(1); }
+							.rg-img-spinner { .opacity(0); }
+						}
 					}
 				}
 			}
