@@ -3,7 +3,7 @@
 	<p>Type subreddit-string into the field above and enjoy some images.</p>
 
 	<div data-ng-show="queries.length">
-		<h2>Recent queries</h2>
+		<h2>Recent queries <a href="#clear-recent-queries" data-rg-clear-queries>&times;</a></h2>
 
 		<ul class="rg-list">
 			<li data-ng-repeat="query in queries"><a data-ng-href="#/r/{{ query }}">{{ query }}</a></li>

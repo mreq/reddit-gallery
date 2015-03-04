@@ -50,6 +50,26 @@ h1 {
 h2 {
 	.fsize(@bf + 5);
 	padding: 20px 0 0;
+	a {
+		.rounded(50%);
+		.fsize(@bf,@bf);
+		.sq(@bf+6);
+		.transition(all .3s);
+		.opacity(0.5);
+		border: 2px solid @fg;
+		padding: 1px 3.5px;
+		color: @fg;
+		display: inline-block;
+		margin-left: 10px;
+		&:hover, &:active, &:focus {
+			text-decoration: none;
+			color: @fg;
+		}
+		&:hover {
+			.scale(1.3);
+			.opacity(1);
+		}
+	}
 }
 ul {
 	padding-left: 25px;
@@ -62,36 +82,42 @@ ul {
 		margin: 0 10px;
 	}
 }
-.rg-spinner {
-	width: 40px;
-	height: 30px;
-	text-align: center;
+.make-rg-spinner(@width: 20px, @height: 30px) {
+	@p: 17;
+	@w: floor(@width*@p/100);
+	width: @width;
+	height: @height;
+	position: relative;
 	font-size: 10px;
 	> div {
-		background-color: rgba(255,255,255,.15);
+		.topleft;
+		width: @w;
 		height: 100%;
-		width: 8.3333%;
+		background-color: rgba(255,255,255,.15);
 		display: inline-block;
 		-webkit-animation: stretchdelay 1.2s infinite ease-in-out;
 		animation: stretchdelay 1.2s infinite ease-in-out;
 	}
 	.rg-rect2 {
+		@n: 2;
+		left: floor(@width*((@n - 1)*25 + (25-@p)/4)/100);
 		-webkit-animation-delay: -1.1s;
 		animation-delay: -1.1s;
 	}
 	.rg-rect3 {
+		@n: 3;
+		left: floor(@width*((@n - 1)*25 + (25-@p)/4)/100);
 		-webkit-animation-delay: -1.0s;
 		animation-delay: -1.0s;
 	}
 	.rg-rect4 {
+		@n: 4;
+		left: floor(@width*((@n - 1)*25 + (25-@p)/4)/100);
 		-webkit-animation-delay: -0.9s;
 		animation-delay: -0.9s;
 	}
-	.rg-rect5 {
-		-webkit-animation-delay: -0.8s;
-		animation-delay: -0.8s;
-	}
 }
+.rg-spinner { .make-rg-spinner; }
 .rg-list {
 
 }
@@ -138,13 +164,13 @@ ul {
 	.rg-spinner {
 		.ic(30px);
 		.transition(right .3s);
-		right: -40px;
+		right: -25px;
 	}
 }
 .rg-loading {
 	#rg-header {
 		#rg-input-wrap { padding-right: 42px; }
-		.rg-spinner { right: 2px; }
+		.rg-spinner { right: 10px; }
 	}
 }
 #rg-wrap {
@@ -163,6 +189,7 @@ ul {
 	overflow: hidden;
 	ul {
 		.ul;
+		.transition(all .3s);
 	}
 	> ul {
 		.clearfix;
@@ -174,10 +201,24 @@ ul {
 				height: 100%;
 				> li {
 					height: 100%;
+					display: block;
 					text-align: center;
 					position: relative;
+					overflow: hidden;
+					img, .rg-img-spinner {
+						.transition(opacity 0.3s);
+					}
 					img {
 						.topleft(50%, 50%);
+						.opacity(0);
+					}
+					.rg-img-spinner {
+						.icl(32px, 50px);
+						.make-rg-spinner(32px, 50px);
+					}
+					&.rg-loaded {
+						img { .opacity(1); }
+						.rg-img-spinner { .opacity(0); }
 					}
 				}
 			}

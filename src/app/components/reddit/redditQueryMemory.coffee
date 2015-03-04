@@ -6,7 +6,7 @@ angular
 				try
 					queries = @load()
 					queries.push query
-					localStorage.set 'redditGalleryQueries', JSON.stringify _.uniq queries
+					localStorage.setItem 'redditGalleryQueries', JSON.stringify _.uniq queries
 				catch
 					false
 			load: ->
@@ -18,4 +18,9 @@ angular
 						[]
 				catch
 					[]
+			clear: ->
+				try
+					localStorage.setItem 'redditGalleryQueries', '[]'
+				catch
+					false
 		}

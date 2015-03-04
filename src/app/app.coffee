@@ -25,3 +25,7 @@ angular
 		# $locationProvider.html5Mode
 		# 	enabled: true
 		# 	requireBase: false
+	.run ($rootScope, $location) ->
+		$rootScope.loading = true
+		$rootScope.$on 'changeRoute', (e, route) ->
+			$location.path route

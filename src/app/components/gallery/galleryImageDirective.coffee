@@ -1,14 +1,14 @@
 angular
 	.module 'reddit-gallery-main'
-	.directive 'rgImage', ($window) ->
+	.directive 'rgImage', ($window, $timeout) ->
 		scope:
 			'rgImage': '=' 
 		link: ($scope, el) ->
 			w = $('#rg-gallery')
-			iw = $scope.rgImage.width
-			ih = $scope.rgImage.height
 
 			fixDimensions = ->
+				iw = $scope.rgImage.width
+				ih = $scope.rgImage.height
 				wh = w.height()
 				ww = w.width()
 				if iw > ww
@@ -28,6 +28,7 @@ angular
 				
 				el.css
 					width: ww
+					height: wh
 				el.children('img').css
 					width: iw
 					height: ih
@@ -36,6 +37,12 @@ angular
 
 			fixDimensions()
 			$($window).on "resize.rgImage#{ $scope.rgImage.id } orientationchange.rgImage#{ $scope.rgImage.id }", fixDimensions
+
+			el
+				.imagesLoaded()
+				.always ->
+					el.addClass('rg-loaded')
+					$timeout (-> el.find('.rg-img-spinner').remove()), 500
 
 			$scope.$on '$destroy', ->
 				$($window).off ".rgImage#{ $scope.rgImage.id }"

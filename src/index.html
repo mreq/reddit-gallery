@@ -10,13 +10,13 @@
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="stylesheet" href="stylesheets/reddit-gallery.css">
 	</head>
-	<body>
+	<body data-ng-class="{ 'rg-loading': loading }" class="rg-loading">
 		<div id="rg-wrap">
 			<div id="rg-view" data-ng-view></div>
 		</div>
 		<header id="rg-header">
-			<div id="rg-input-wrap"><input type="text" id="rg-input" data-ng-model="subreddits"></div>
-			<a href="/">/r/</a>
+			<div id="rg-input-wrap"><input type="text" id="rg-input" data-ng-model="subreddits" data-rg-gallery-input></div>
+			<a href="#/">/r/</a>
 			<div class="rg-spinner">
 			  <div class="rg-rect1"></div>
 			  <div class="rg-rect2"></div>

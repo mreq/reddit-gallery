@@ -18,7 +18,11 @@ angular
 						Authorization: 'Client-ID 8a5b39ce4ff3d98'
 				$http opts
 					.success (response) ->
-						scope.gallery.push [response]
+						scope.gallery.push {
+							id: response.data.id
+							verticalIndex: 0
+							images: [response.data]
+						}
 			getAlbum: (scope, url) ->
 				opts = 
 					url: "https://api.imgur.com/3/album/#{ url.split('/').pop() }"
@@ -26,5 +30,9 @@ angular
 						Authorization: 'Client-ID 8a5b39ce4ff3d98'
 				$http opts
 					.success (response) ->
-						scope.gallery.push response.data.images
+						scope.gallery.push {
+							id: response.data.id
+							verticalIndex: 0
+							images: response.data.images
+						}
 		}
