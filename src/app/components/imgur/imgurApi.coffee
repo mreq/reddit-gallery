@@ -6,8 +6,8 @@ angular
 				isAlbum = post.data.url.match '/a/'
 				if isAlbum
 					@getAlbum scope, post
-				else
-					@getImage scope, post
+				# else
+				# 	@getImage scope, post
 			getPosts: (scope, posts) ->
 				_.each posts, (post) =>
 					@getPost scope, post

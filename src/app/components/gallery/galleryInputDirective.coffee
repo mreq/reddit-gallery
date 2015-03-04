@@ -17,7 +17,8 @@ angular
 				if e.keyCode is 13
 					submit()
 				else if e.keyCode is 27
-					el.blur()
+					$scope.subreddits = ''
+					submit()
 				
 			$scope.$on '$destroy', ->
 				el.off()

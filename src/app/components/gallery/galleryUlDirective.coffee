@@ -3,6 +3,12 @@ angular
 	.directive 'rgGalleryUl', ($window) ->
 		($scope, el) ->
 			w = $('#rg-gallery')
+			$scope.translateX = 0
+
+			$scope.slideToIndex = (index) ->
+				$scope.index = index
+				$scope.translateX = -w.width()*index
+				el.css 'transform', """translate(#{ $scope.translateX }px, 0)"""
 
 			# Bind keyboard
 			$(document).on 'keyup.rgGalleryUl', (e) ->
@@ -27,20 +33,18 @@ angular
 				if verticalIndex < 0 or verticalIndex > ($scope.gallery[oldindex].images.length - 1)
 					return false
 				
-				# Move
-				el.css 'transform', """translate(#{ -w.width()*index }px, 0)"""
 				$scope.$apply ->
 					if index is oldindex
 						$scope.gallery[index].verticalIndex = verticalIndex
 					else
-						$scope.index = index
+						$scope.slideToIndex index
 					
 
 			fixDimensions = ->
 				ww = w.width()
 				el.width ww*$scope.gallery.length + 100
 				el.children('li').width ww
-				el.css 'transform', """translate(#{ -w.width()*$scope.index }px, 0)"""
+				$scope.slideToIndex $scope.index
 
 			$($window).on 'resize.rgGalleryUl', fixDimensions
 			$scope.$watch 'gallery.length', fixDimensions

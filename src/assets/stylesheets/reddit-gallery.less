@@ -195,6 +195,9 @@ ul {
 	> ul {
 		.clearfix;
 		height: 100%;
+		&.rg-swiping {
+			&, ul { .transition(none); }
+		}
 		> li {
 			height: 100%;
 			float: left;
