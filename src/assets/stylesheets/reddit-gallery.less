@@ -152,7 +152,38 @@ ul {
 	padding-top: @hHeader;
 }
 #rg-view {
+	height: 100%;
 	> .rg-container:first-child {
 		padding-top: 10px;
+	}
+}
+#rg-gallery {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	ul {
+		.ul;
+	}
+	> ul {
+		.clearfix;
+		height: 100%;
+		> li {
+			height: 100%;
+			float: left;
+			> ul {
+				height: 100%;
+				> li {
+					height: 100%;
+					text-align: center;
+					position: relative;
+					img {
+						.topleft(50%, 50%);
+					}
+				}
+			}
+		}
+	}
+	img {
+
 	}
 }

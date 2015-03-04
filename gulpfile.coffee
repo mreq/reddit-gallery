@@ -2,7 +2,6 @@
 gulp           = require 'gulp'
 bower          = require 'gulp-bower'
 browserSync    = require 'browser-sync'
-changed        = require 'gulp-changed'
 coffee         = require 'gulp-coffee'
 concat         = require 'gulp-concat'
 gutil          = require 'gulp-util'
@@ -43,7 +42,6 @@ gulp.task 'cleanTmp', ->
 gulp.task 'less', ->
 	gulp
 		.src paths.stylesheets
-		.pipe changed "#{ paths.tmp }/stylesheets"
 		.pipe plumber errorHandler: notify.onError("Error: <%= error.message %>")
 		.pipe less()
 		.pipe gulp.dest "#{ paths.tmp }/stylesheets"

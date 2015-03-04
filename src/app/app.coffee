@@ -2,7 +2,8 @@ angular
 	.module 'reddit-gallery', [
 		'ngRoute'
 		'reddit-gallery-templates'
-		'reddit-gallery-api'
+		'reddit-gallery-reddit'
+		'reddit-gallery-imgur'
 		'reddit-gallery-main'
 		'reddit-gallery-home'
 	]

@@ -1,1 +1,11 @@
-gallery!
+<div id="rg-gallery">
+	<ul data-rg-gallery-ul>
+		<li data-ng-repeat="album in gallery">
+			<ul>
+				<li data-ng-repeat="image in album" data-rg-image="image.data">
+					<img data-ng-src="{{ image.data.link }}" alt="{{ image.data.description }}">
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

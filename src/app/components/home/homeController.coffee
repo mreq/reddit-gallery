@@ -1,5 +1,6 @@
 angular
 	.module 'reddit-gallery-home', []
-	.controller 'HomeCtrl', ($scope, $rootScope, RedditApiFactory) ->
+	.controller 'HomeCtrl', ($scope, $rootScope, queryMemory) ->
 		$rootScope.subrredits = ''
-		$scope.queries = []
+
+		$scope.queries = queryMemory.load()

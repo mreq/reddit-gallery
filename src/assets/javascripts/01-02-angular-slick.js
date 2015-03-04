@@ -1,1 +1,0 @@
-../bower_components/angular-slick/dist/slick.js
